@@ -1,24 +1,16 @@
 import React from "react"; 
 import ReactDOM from "react-dom"; 
 import App from "./App.js"
-import Clock from "./components/Clock.js";
 
-ReactDOM.render(
-    <> 
-        <App />
-        <Clock date={new Date()}/>
-    </>,
+ReactDOM.render( 
+        <App />,
     document.getElementById("index")
 )
-  
-  function tick() {
-    ReactDOM.render(
-        <> 
-            <App />
-            <Clock date={new Date()}/>
-        </>,
+function tick() {
+    ReactDOM.render( 
+            <App />,
         document.getElementById("index")
     )
   }
   
-  setInterval(tick, 1000);
+setInterval(tick, 1000);
