@@ -98,6 +98,7 @@ router.get("/info", async (req, res) => {
                 registration_date: data.registration_date
         })  
     })
+    
     for (let data of info){
         for (let student of students){
             if (data.student_id == student.id){
