@@ -72,7 +72,7 @@ router.post("/registration", async (req, res) => {
     const newRegistration = new Registration({
         student_id: req.body.student_id,
         course_code: req.body.course_code,
-        registration_date: new Date()
+        registration_date: new Date().toLocaleDateString()
     });
     try {
         await newRegistration.save();
@@ -85,6 +85,37 @@ router.post("/registration", async (req, res) => {
     }
 });
 
+router.get("/info", async (req, res) => {
+    const students = await Student.find();
+    const courses = await Course.find();
+    const registrations = await Registration.find();
+    const info = []
+    registrations.map((data) => {
+        info.push(
+            {
+                student_id: data.student_id,
+                course_code: data.course_code,
+                registration_date: data.registration_date
+        })  
+    })
+    for (let data of info){
+        for (let x of students){
+            if (data.student_id == x.id){
+                data.student_name = x.full_name
+            }
+        }
+    }
+
+    for (let data of info){
+        for (let x of courses){
+            if (data.course_code == x.course_code){
+                data.course_name = x.course_name
+            }
+        }
+    }
+    res.json(info)
+
+});
 
 
 module.exports = router;
