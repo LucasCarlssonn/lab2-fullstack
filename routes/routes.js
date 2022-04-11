@@ -99,17 +99,17 @@ router.get("/info", async (req, res) => {
         })  
     })
     for (let data of info){
-        for (let x of students){
-            if (data.student_id == x.id){
-                data.student_name = x.full_name
+        for (let student of students){
+            if (data.student_id == student.id){
+                data.student_name = student.full_name
             }
         }
     }
 
     for (let data of info){
-        for (let x of courses){
-            if (data.course_code == x.course_code){
-                data.course_name = x.course_name
+        for (let course of courses){
+            if (data.course_code == course.course_code){
+                data.course_name = course.course_name
             }
         }
     }
