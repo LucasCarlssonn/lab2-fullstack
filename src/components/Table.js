@@ -16,34 +16,34 @@ function Table(props) {
         <thead>
           <tr>
             <th>
-                <button style={{width: "100%", border: "none"}} type="button" onClick={() => setSortedField("student_id")}>
+                <button type="button" onClick={() => setSortedField("student_id")}>
                     Student_ID
                 </button>
             </th>
             <th>
-                <button style={{width: "100%", border: "none"}} type="button" onClick={() => setSortedField("student_name")}>
+                <button type="button" onClick={() => setSortedField("student_name")}>
                     Student name
                 </button>
             </th>
             <th>
-                <button style={{width: "100%", border: "none"}} type="button" onClick={() => setSortedField("course_name")}>
+                <button type="button" onClick={() => setSortedField("course_name")}>
                     Course name
                 </button>
             </th>
             <th>
-                <button style={{width: "100%", border: "none"}} type="button" onClick={() => setSortedField("registration_date")}>
+                <button type="button" onClick={() => setSortedField("registration_date")}>
                     registration time
                 </button>
             </th>
           </tr>
         </thead>
         <tbody>
-          {sortedStudents.slice(0, 5).map(student => (
+          {sortedStudents.map(student => (
             <tr>
-                <td style={{border: "1px solid blue"}}>{student.student_id}</td>
-                <td style={{border: "1px solid blue"}}>{student.student_name}</td>
-                <td style={{border: "1px solid blue"}}>{student.course_name}</td>
-                <td style={{border: "1px solid blue"}}>{student.registration_date}</td>
+                <td>{student.student_id}</td>
+                <td>{student.student_name}</td>
+                <td>{student.course_name}</td>
+                <td>{student.registration_date}</td>
             </tr>
           ))}
         </tbody>

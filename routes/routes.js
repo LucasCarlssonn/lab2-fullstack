@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Student = require("../model/Student.js");
 const Registration = require("../model/Registration.js")
 const Course = require("../model/Course.js")
+const underscore = require("underscore");
 
 router.get("/", async (req, res) => {
     res.send("Hello World!")
@@ -88,9 +89,15 @@ router.post("/registration", async (req, res) => {
 router.get("/info", async (req, res) => {
     const students = await Student.find();
     const courses = await Course.find();
-    const registrations = await Registration.find();
+    const registrations = await Registration.find()
+    const sortedRegistrations = underscore.sortBy(registrations, "registration_date")
+    sortedRegistrations.reverse();
+    console.log("Unsorted\n");
+    console.log(registrations);
+    console.log("Sorted\n");
+    console.log(sortedRegistrations);
     const info = []
-    registrations.map((data) => {
+    sortedRegistrations.slice(0, 5).map((data) => {
         info.push(
             {
                 student_id: data.student_id,
