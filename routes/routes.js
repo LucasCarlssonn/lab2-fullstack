@@ -114,6 +114,8 @@ router.get("/info", async (req, res) => {
             }
         }
     }
+    console.log("Information fetched from database:");
+    console.log(info);
     res.json(info)
 
 });
