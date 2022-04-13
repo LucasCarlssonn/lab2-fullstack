@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import StudentTable from "./components/StudentTable.js";
+import Table from "./components/Table.js";
 import Clock from "./components/Clock.js";
 
 function App(){
@@ -12,7 +12,7 @@ function App(){
             .then(res => res.json())
             .then(data => setDataTable(data))
             .catch(err => console.log(err))
-        }, 10000)
+        }, 60000)
         return () => {
             clearInterval(interval)
         };
@@ -28,7 +28,7 @@ function App(){
     return (
         <div className="App">
             <h1 style={{textAlign: "center"}}>Students</h1>
-            <StudentTable data={dataTable}/>
+            <Table data={dataTable}/>
             <Clock date={new Date()}/>
         </div>
     )

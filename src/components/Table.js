@@ -2,13 +2,13 @@ import React from "react";
 import underscore from "underscore"
 // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
-function StudentTable(props) {
-    const products = props.data;
+function Table(props) {
+    const students = props.data;
     const [sortedField, setSortedField] = React.useState(null);
-    let sortedProducts = underscore.sortBy(products, sortedField)
+    let sortedStudents = underscore.sortBy(students, sortedField)
     if (!sortedField){
-        sortedProducts = underscore.sortBy(products, "registration_date")
-        sortedProducts = sortedProducts.reverse();
+        sortedStudents = underscore.sortBy(students, "registration_date")
+        sortedStudents = sortedStudents.reverse();
     }
     return (
       <table style ={{borderCollapse : "collapse", margin: "2rem auto", maxWidth: "900px", width: "100%", textAlign: "center"}}>
@@ -38,12 +38,12 @@ function StudentTable(props) {
           </tr>
         </thead>
         <tbody>
-          {sortedProducts.slice(0, 5).map(product => (
-            <tr key={product.id}>
-                <td style={{border: "1px solid blue"}}>{product.student_id}</td>
-                <td style={{border: "1px solid blue"}}>{product.student_name}</td>
-                <td style={{border: "1px solid blue"}}>{product.course_name}</td>
-                <td style={{border: "1px solid blue"}}>{product.registration_date}</td>
+          {sortedStudents.slice(0, 5).map(student => (
+            <tr>
+                <td style={{border: "1px solid blue"}}>{student.student_id}</td>
+                <td style={{border: "1px solid blue"}}>{student.student_name}</td>
+                <td style={{border: "1px solid blue"}}>{student.course_name}</td>
+                <td style={{border: "1px solid blue"}}>{student.registration_date}</td>
             </tr>
           ))}
         </tbody>
@@ -51,4 +51,4 @@ function StudentTable(props) {
     );
   }
 
-export default StudentTable;
+export default Table;
