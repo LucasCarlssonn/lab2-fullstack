@@ -1,5 +1,7 @@
 import React from "react"
 import underscore from "underscore"
+// Table and sorting taken from link below
+// with modifications to fit the task at hand
 // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
 function Table(props) {
@@ -11,28 +13,28 @@ function Table(props) {
         sortedStudents = sortedStudents.reverse()
     }
     return (
-      <table style ={{borderCollapse : "collapse", margin: "2rem auto", maxWidth: "900px", width: "100%", textAlign: "center"}}>
+      <table>
         <caption>Student info </caption>
         <thead>
           <tr>
             <th>
                 <button type="button" onClick={() => setSortedField("student_id")}>
-                    Student_ID
+                    Student ID
                 </button>
             </th>
             <th>
                 <button type="button" onClick={() => setSortedField("student_name")}>
-                    Student name
+                    Student Name
                 </button>
             </th>
             <th>
                 <button type="button" onClick={() => setSortedField("course_name")}>
-                    Course name
+                    Course Name
                 </button>
             </th>
             <th>
                 <button type="button" onClick={() => setSortedField("registration_date")}>
-                    registration time
+                    Registration Time
                 </button>
             </th>
           </tr>
