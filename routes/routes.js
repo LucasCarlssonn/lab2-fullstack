@@ -1,23 +1,23 @@
-const router = require("express").Router();
-const Student = require("../model/Student.js");
+const router = require("express").Router()
+const Student = require("../model/Student.js")
 const Registration = require("../model/Registration.js")
 const Course = require("../model/Course.js")
-const underscore = require("underscore");
+const underscore = require("underscore")
 
 router.get("/", async (req, res) => {
     res.send("Hello World!")
-});
+})
 
 router.get("/students", async (req, res) => {
-    const students = await Student.find();
-    res.json(students);
-});
+    const students = await Student.find()
+    res.json(students)
+})
 
 router.post("/student", async (req, res) => {
 
-    const students = await Student.find();
+    const students = await Student.find()
     if(students.length == 0){
-        largest = "0";
+        largest = "0"
     } else {
         for (let Student of students){
             var largest = Student.id
@@ -26,7 +26,7 @@ router.post("/student", async (req, res) => {
             }
         }
         if (largest == "NaN"){
-            largest = "0";
+            largest = "0"
         }
     }
     const Student_id = parseInt(largest) + 1
@@ -39,63 +39,59 @@ router.post("/student", async (req, res) => {
         id: Student_id,
         full_name: req.body.full_name,
         email: req.body.email
-    });
+    })
 
     try {
-        await newStudent.save();
-        const students = await Student.find();
-        res.status(201).json(students);
-        console.log("Student created");
+        await newStudent.save()
+        const students = await Student.find()
+        res.status(201).json(students)
+        console.log("Student created")
     } catch (error) {
-        console.log(error);
-        res.status(400).json(error);
+        console.log(error)
+        res.status(400).json(error)
     }
-});
+})
 
 router.post("/course", async (req, res) => {
     const newCourse = new Course({
         course_code: req.body.course_code,
         course_name: req.body.course_name,
         course_description: req.body.course_description
-    });
+    })
     try {
-        await newCourse.save();
-        const courses = await Course.find();
-        res.status(201).json(courses);
-        console.log("Course created");
+        await newCourse.save()
+        const courses = await Course.find()
+        res.status(201).json(courses)
+        console.log("Course created")
     } catch (error) {
-        console.log(error);
-        res.status(400).json(error);
+        console.log(error)
+        res.status(400).json(error)
     }
-});
+})
 
 router.post("/registration", async (req, res) => {
     const newRegistration = new Registration({
         student_id: req.body.student_id,
         course_code: req.body.course_code,
         registration_date: new Date().toLocaleDateString()
-    });
+    })
     try {
-        await newRegistration.save();
-        const registrations = await Registration.find();
-        res.status(201).json(registrations);
-        console.log("Registration created");
+        await newRegistration.save()
+        const registrations = await Registration.find()
+        res.status(201).json(registrations)
+        console.log("Registration created")
     } catch (error) {
-        console.log(error);
-        res.status(400).json(error);
+        console.log(error)
+        res.status(400).json(error)
     }
-});
+})
 
 router.get("/info", async (req, res) => {
-    const students = await Student.find();
-    const courses = await Course.find();
+    const students = await Student.find()
+    const courses = await Course.find()
     const registrations = await Registration.find()
     const sortedRegistrations = underscore.sortBy(registrations, "registration_date")
-    sortedRegistrations.reverse();
-    console.log("Unsorted\n");
-    console.log(registrations);
-    console.log("Sorted\n");
-    console.log(sortedRegistrations);
+    sortedRegistrations.reverse()
     const info = []
     sortedRegistrations.slice(0, 5).map((data) => {
         info.push(
@@ -121,11 +117,11 @@ router.get("/info", async (req, res) => {
             }
         }
     }
-    console.log("Information fetched from database:");
-    console.log(info);
+    console.log("Information fetched from database:")
+    console.log(info)
     res.json(info)
 
-});
+})
 
 
-module.exports = router;
+module.exports = router

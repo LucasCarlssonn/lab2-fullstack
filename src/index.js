@@ -1,5 +1,5 @@
-import React from "react"; 
-import ReactDOM from "react-dom"; 
+import React from "react"
+import ReactDOM from "react-dom" 
 import App from "./App.js"
 
 ReactDOM.render( 
@@ -13,4 +13,4 @@ function tick() {
     )
   }
   
-setInterval(tick, 100);
+setInterval(tick, 100)

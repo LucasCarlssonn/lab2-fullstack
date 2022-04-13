@@ -1,18 +1,18 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const api = require("./routes/routes.js");
-const app = express();
-const PORT = process.env.PORT || 3000;
-require("dotenv").config();
+const express = require("express")
+const mongoose = require("mongoose")
+const api = require("./routes/routes.js")
+const app = express()
+const PORT = process.env.PORT || 3000
+require("dotenv").config()
 
 
 mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true, useNewUrlParser: true}, () =>{
-    console.log("Connected to the database");
-});
-app.use(express.json());
+    console.log("Connected to the database")
+})
+app.use(express.json())
 app.use(express.static("dist"))
-app.use("/api", api);
+app.use("/api", api)
 
 app.listen(PORT, () => {
-    console.log("Listening on port " + PORT);
-});
+    console.log("Listening on port " + PORT)
+})

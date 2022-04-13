@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const StudentSchema = new mongoose.Schema({
     id: {
@@ -13,6 +13,6 @@ const StudentSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-});
+})
 
-module.exports = mongoose.model("Student", StudentSchema);
+module.exports = mongoose.model("Student", StudentSchema)

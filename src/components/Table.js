@@ -1,14 +1,14 @@
-import React from "react";
+import React from "react"
 import underscore from "underscore"
 // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
 function Table(props) {
-    const students = props.data;
-    const [sortedField, setSortedField] = React.useState(null);
+    const students = props.data
+    const [sortedField, setSortedField] = React.useState(null)
     let sortedStudents = underscore.sortBy(students, sortedField)
     if (!sortedField){
         sortedStudents = underscore.sortBy(students, "registration_date")
-        sortedStudents = sortedStudents.reverse();
+        sortedStudents = sortedStudents.reverse()
     }
     return (
       <table style ={{borderCollapse : "collapse", margin: "2rem auto", maxWidth: "900px", width: "100%", textAlign: "center"}}>
@@ -48,7 +48,7 @@ function Table(props) {
           ))}
         </tbody>
       </table>
-    );
+    )
   }
 
-export default Table;
+export default Table

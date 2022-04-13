@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const CourseSchema = new mongoose.Schema({
     course_code: {
@@ -13,6 +13,6 @@ const CourseSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-});
+})
 
-module.exports = mongoose.model("Course", CourseSchema);
+module.exports = mongoose.model("Course", CourseSchema)
